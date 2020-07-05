@@ -10,6 +10,14 @@ class Genre(models.Model):
         """String for representing the Model object."""
         return self.name
 
+class Language(models.Model):
+    """Model representing a book genre."""
+    name = models.CharField(max_length=200, help_text='Enter a book language (e.g. English, French, Farsi)')
+    
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.name
+
 
 class Book(models.Model):
     """Model representing a book (but not a specific copy of a book)."""
@@ -25,6 +33,10 @@ class Book(models.Model):
     # ManyToManyField used because genre can contain many books. Books can cover many genres.
     # Genre class has already been defined so we can specify the object above.
     genre = models.ManyToManyField(Genre, help_text='Select a genre for this book')
+    
+    # Foreign Key used because book can only have one language, but languages can have multiple books
+    # language as a string rather than object because it hasn't been declared yet in the file
+    language = models.ForeignKey('Language', on_delete=models.SET_NULL, null=True)
     
     def __str__(self):
         """String for representing the Model object."""
