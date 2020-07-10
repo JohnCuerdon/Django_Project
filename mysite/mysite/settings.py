@@ -31,7 +31,10 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'home',
+    # 'home',
+    # 'autos',
+    'home.apps.HomeConfig',
+    'autos.apps.AutosConfig',
     'polls.apps.PollsConfig',
     'django.contrib.admindocs',
     'django.contrib.admin',
@@ -41,6 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+# When we get to crispy forms :)
+CRISPY_TEMPLATE_PACK = 'bootstrap3' # Add
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

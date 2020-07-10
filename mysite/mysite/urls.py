@@ -17,10 +17,12 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import TemplateView
 
-urlpatterns = [
-    path('', include ('home.urls')),   
-    path('polls/',include('polls.urls')),      
+urlpatterns = [  
+    path('', TemplateView.as_view(template_name='home/main.html')),    
     path('admin/', admin.site.urls),
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('autos/', include('autos.urls')),
+    path('home/', include ('home.urls')),
+    path('polls/',include('polls.urls')),
 ]
